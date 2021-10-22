@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState, useEffect} from 'react';
 import { Search } from './component/Search';
 import { City } from './component/City';
-const API_KEY = process.env.API_KEY;
+const API_KEY = '4d8fb5b93d4af21d66a2948710284366';
 
 function App() {
   const [city, setCity] = useState([]);
