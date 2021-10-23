@@ -7,6 +7,7 @@ const API_KEY = '4d8fb5b93d4af21d66a2948710284366';
 function App() {
   const [city, setCity] = useState([]);
   const [fetchCity, setFetchCity] = useState([]);
+  const [validCity, setValidCity] = useState(true);
 
   const handleSearch = (city) => {
     setCity(prevState => {
@@ -24,7 +25,10 @@ function App() {
         setFetchCity(prevState => {
           return [...prevState, {main, name, sys, weather, icon}]
         })
-      })
+        setValidCity(true)
+      }).catch(() => {
+        setValidCity(false)
+      });
   }
   }, [city])
 
@@ -33,7 +37,7 @@ function App() {
     <section className="top-banner">
       <div className="container">
         <h1 className="heading">Simple Weather App</h1>
-        <Search handleSearch={handleSearch}/>
+        <Search handleSearch={handleSearch} validCity={validCity}/>
       </div>
     </section>
     <section className='ajax-section'>
