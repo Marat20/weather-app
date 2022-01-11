@@ -1,7 +1,21 @@
+import React from 'react';
+import { BsFillXCircleFill } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { deleteCity } from '../store/cities/actionsCities';
+
 export const City = ({ city }) => {
-  const { main, name, sys, weather, icon } = city;
+  const { main, name, sys, weather, icon, cityId } = city;
+  const dispatch = useDispatch();
+
+  const handleDeleteCity = (id) => {
+    dispatch(deleteCity(id));
+  };
+
   return (
     <li className='city'>
+      <button onClick={() => handleDeleteCity(cityId)}>
+        <BsFillXCircleFill />
+      </button>
       <h2 className='city-name'>
         <span>{name}</span>
         <sup>{sys.country}</sup>

@@ -1,5 +1,5 @@
 import {
-    ADD_CITY, SWITCH_VALID_CITY
+    ADD_CITY, DELETE_CITY, SWITCH_VALID_CITY
 } from "./actionsCities";
 
 
@@ -11,13 +11,21 @@ export const initialState = {
 export const citiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CITY:
-            state.cities.forEach(el => {
-                if (el.name.toLowerCase() === action.payload.name.toLowerCase()) return
-            })
+            let isCity = state.cities.find(el => el.name.toLowerCase() === action.payload.name.toLowerCase());
+            if (isCity) {
+                return state
+            } else {
+                return {
+                    ...state,
+                    cities: [...state.cities, action.payload]
+                };
+            }
+        case DELETE_CITY:
+            let newArr = state.cities.filter(el => el.cityId !== action.payload);
             return {
                 ...state,
-                cities: [...state.cities, action.payload]
-            };
+                cities: newArr
+            }
         case SWITCH_VALID_CITY:
             return {
                 ...state,

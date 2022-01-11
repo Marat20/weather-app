@@ -1,9 +1,11 @@
 import {
     nanoid
 } from "nanoid";
+import { createURL } from "../../helper/createURL";
 
 export const ADD_CITY = 'CITY::ADD_CITY';
 export const SWITCH_VALID_CITY = 'CITY::SWITCH_VALID_CITY';
+export const DELETE_CITY = 'CITY::DELETE_CITY';
 
 export const addCity = (city) => ({
     type: ADD_CITY,
@@ -15,8 +17,14 @@ export const switchValidCity = (bool) => ({
     payload: bool
 });
 
+export const deleteCity = (cityId) => ({
+    type: DELETE_CITY,
+    payload: cityId
+});
+
+
 export const addCityWithThunk = (city) => async (dispatch) => {
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric`;
+    const URL = createURL(city);
     const response = await fetch(URL);
     if (response.ok) {
         const data = await response.json();

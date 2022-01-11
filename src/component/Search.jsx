@@ -1,7 +1,15 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCityWithThunk } from '../store/cities/actionsCities';
 
-export const Search = ({ validCity, handleSearch = Function.prototype }) => {
+
+export const Search = ({ validCity }) => {
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
+
+  const handleSearch = (city) => {
+    dispatch(addCityWithThunk(city))
+  };
 
   const submit = (e) => {
     if (!value) return;
