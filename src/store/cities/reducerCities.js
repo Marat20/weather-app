@@ -21,7 +21,7 @@ export const citiesReducer = (state = initialState, action) => {
                 };
             }
         case DELETE_CITY:
-            let newArr = state.cities.filter(el => el.cityId !== action.payload);
+            let newArr = state.cities.filter(el => el.id !== action.payload);
             return {
                 ...state,
                 cities: newArr
