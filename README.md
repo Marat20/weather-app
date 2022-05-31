@@ -1,6 +1,6 @@
 # The Weather App
 
-With this application you can see the weather in any city around the world.
+With this application you can see actual weather in any city around the world.
 
 ### Start
 
