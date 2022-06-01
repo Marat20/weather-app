@@ -179,6 +179,12 @@ body {
   font-size: 0.5em;
 }
 
+
+.ajax-section .city button {
+  position: relative;
+  left: 90%;
+}
+
 .ajax-section .city-name sup {
   padding: 0.2em 0.6em;
   border-radius: 30px;

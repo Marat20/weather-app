@@ -1,5 +1,6 @@
 import React from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { deleteCity } from '../store/cities/actionsCities';
 
@@ -13,12 +14,13 @@ export const City = ({ city }) => {
 
   return (
     <li className='city'>
-      {/* <button 
-        type="button" 
-        onClick={() => handleDeleteCity(id)} 
-        className="btn-close" 
-        aria-label="Close">
-      </button> */}
+        <Button 
+        type="primary"
+        shape="circle"
+        icon={<CloseOutlined />}
+        size='large'
+        onClick={() => handleDeleteCity(id)}
+        />
       <h2 className='city-name'>
         <span>{cityName}</span>
         <sup>{country}</sup>

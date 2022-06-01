@@ -21,7 +21,7 @@ export const App = () => {
         <ul className='cities'>
           {
             cities && cities.map((el) => {
-              return <City key={el.cityId} city={el}/>
+              return <City key={el.id} city={el}/>
             })
           }
         </ul>

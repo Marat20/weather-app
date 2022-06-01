@@ -11,7 +11,7 @@ export const initialState = {
 export const citiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CITY:
-            let isCity = state.cities.find(el => el.name.toLowerCase() === action.payload.name.toLowerCase());
+            let isCity = state.cities.find(el => el.cityName.toLowerCase() === action.payload.cityName.toLowerCase());
             if (isCity) {
                 return state
             } else {
