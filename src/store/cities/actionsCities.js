@@ -2,6 +2,7 @@ import {
     nanoid
 } from "nanoid";
 import { createURL } from "../../helper/createURL";
+import { getCityParams } from '../../helper/getCityParams'
 
 export const ADD_CITY = 'CITY::ADD_CITY';
 export const SWITCH_VALID_CITY = 'CITY::SWITCH_VALID_CITY';
@@ -28,22 +29,9 @@ export const addCityWithThunk = (city) => async (dispatch) => {
     const response = await fetch(URL);
     if (response.ok) {
         const data = await response.json();
-        const {
-            main,
-            name,
-            sys,
-            weather
-        } = data;
-        const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]['icon']}.svg`;
-        const cityId = nanoid();
-        dispatch(addCity({
-            main,
-            name,
-            sys,
-            weather,
-            icon,
-            cityId
-        }))
+        const cityParams = getCityParams(data);
+        cityParams.id = nanoid();
+        dispatch(addCity(cityParams));
         dispatch(switchValidCity(true))
     } else {
         dispatch(switchValidCity(false))

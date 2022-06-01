@@ -1,10 +1,11 @@
 import React from 'react';
-import { BsFillXCircleFill } from 'react-icons/bs';
+import { Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { deleteCity } from '../store/cities/actionsCities';
 
 export const City = ({ city }) => {
-  const { main, name, sys, weather, icon, cityId } = city;
+  const { temp, cityName, country, condition, icon, id } = city;
   const dispatch = useDispatch();
 
   const handleDeleteCity = (id) => {
@@ -13,20 +14,24 @@ export const City = ({ city }) => {
 
   return (
     <li className='city'>
-      <button onClick={() => handleDeleteCity(cityId)}>
-        <BsFillXCircleFill />
-      </button>
+        <Button 
+        type="primary"
+        shape="circle"
+        icon={<CloseOutlined />}
+        size='large'
+        onClick={() => handleDeleteCity(id)}
+        />
       <h2 className='city-name'>
-        <span>{name}</span>
-        <sup>{sys.country}</sup>
+        <span>{cityName}</span>
+        <sup>{country}</sup>
       </h2>
       <div className='city-temp'>
-        {Math.round(main.temp)}
+        {temp}
         <sup>°C</sup>
       </div>
       <figure>
-        <img className='city-icon' src={icon} alt={weather[0]['description']} />
-        <figcaption>{weather[0]['description']}</figcaption>
+        <img className='city-icon' src={icon} alt={condition} />
+        <figcaption>{condition}</figcaption>
       </figure>
     </li>
   );

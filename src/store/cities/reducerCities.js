@@ -11,7 +11,7 @@ export const initialState = {
 export const citiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CITY:
-            let isCity = state.cities.find(el => el.name.toLowerCase() === action.payload.name.toLowerCase());
+            let isCity = state.cities.find(el => el.cityName.toLowerCase() === action.payload.cityName.toLowerCase());
             if (isCity) {
                 return state
             } else {
@@ -21,7 +21,7 @@ export const citiesReducer = (state = initialState, action) => {
                 };
             }
         case DELETE_CITY:
-            let newArr = state.cities.filter(el => el.cityId !== action.payload);
+            let newArr = state.cities.filter(el => el.id !== action.payload);
             return {
                 ...state,
                 cities: newArr

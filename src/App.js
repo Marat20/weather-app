@@ -3,8 +3,6 @@ import { Search } from './component/Search';
 import { City } from './component/City';
 import { useSelector } from 'react-redux';
 import { getCities, getValidCity } from './store/cities/selectorCities';
-// const API_KEY = '4d8fb5b93d4af21d66a2948710284366';
-
 
 export const App = () => {
   const cities = useSelector(getCities);
@@ -23,7 +21,7 @@ export const App = () => {
         <ul className='cities'>
           {
             cities && cities.map((el) => {
-              return <City key={el.cityId} city={el}/>
+              return <City key={el.id} city={el}/>
             })
           }
         </ul>
