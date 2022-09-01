@@ -1,5 +1,7 @@
 # The Weather App
 
+С помощью этого приложения вы можете увидеть актуальную погоду в любом городе мира.
+
 With this application you can see actual weather in any city around the world.
 
 <img src="./screenshot/screenshot.png"
