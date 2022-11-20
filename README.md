@@ -14,4 +14,4 @@ With this application you can see actual weather in any city around the world.
 npm run start
 ```
 
-**Stacks:** HTML, CSS, JS, ReactJS, Redux, Redux-thunk, Webpack
+**Stacks:** HTML, SASS, TypeScript, ReactJS, Redux toolkit, Ant design
