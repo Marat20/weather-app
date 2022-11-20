@@ -1,26 +1,28 @@
-import React from 'react';
 import { Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
-import { deleteCity } from '../store/cities/actionsCities';
+import { deleteCity } from '../../redux/slices/citiesSlice';
+import { useAppDispatch } from '../../redux/redux-hooks';
+import { CityParam } from '../../models/models';
 
-export const City = ({ city }) => {
-  const { temp, cityName, country, condition, icon, id } = city;
-  const dispatch = useDispatch();
-
-  const handleDeleteCity = (id) => {
-    dispatch(deleteCity(id));
-  };
+export const City = ({
+  temp,
+  cityName,
+  country,
+  condition,
+  icon,
+  id,
+}: CityParam) => {
+  const dispatch = useAppDispatch();
 
   return (
     <li className='city'>
-        <Button 
-        type="primary"
-        shape="circle"
+      <Button
+        type='primary'
+        shape='circle'
         icon={<CloseOutlined />}
         size='large'
-        onClick={() => handleDeleteCity(id)}
-        />
+        onClick={() => dispatch(deleteCity(id))}
+      />
       <h2 className='city-name'>
         <span>{cityName}</span>
         <sup>{country}</sup>
